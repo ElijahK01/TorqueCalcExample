@@ -35,10 +35,10 @@ public class TourqueCalc {
 			
 			inputStr = input.nextLine().trim();
 		}
-		
-		Vector sum = VectorMath.sum(vecList);
-		
-		System.out.println("Angle: " + sum.returnAngle() + "\nRadius: " + sum.returnRadius());
+
+		Vector v_avg = VectorMath.average(vecList);
+		System.out.println("\nCenter of gravity stats\n\nAngle(degrees): " + v_avg.returnAngle()*(180.0/Math.PI) + "\nRadius: " + v_avg.returnRadius());
+		System.out.println("Max Tourque needed: " + v_avg.returnRadius());
 		input.close();
 	}
 }

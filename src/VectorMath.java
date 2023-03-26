@@ -39,7 +39,7 @@ public class VectorMath {
 	
 	public static Vector scaleVector(Vector v, double scale)
 	{
-		return new Vector(v.returnAngle(), v.returnRadius() * scale);
+		return new Vector(v.returnRadius() * scale, v.returnAngle());
 	}
 	
 	public static Vector sum(Vector v1, Vector v2)
@@ -66,5 +66,32 @@ public class VectorMath {
 		}
 		
 		return cartesianToVector(x, y);
+	}
+
+	public static Vector average(Vector v1, Vector v2)
+	{
+		double x = (vectorX(v1) + vectorX(v2)) / 2;
+		double y = (vectorY(v1) + vectorY(v2)) / 2;
+
+		return cartesianToVector(x, y);
+	}
+
+	public static Vector average(ArrayList<Vector> vecs)
+	{
+		int arraySize = vecs.size();
+		double x = 0;
+		double y = 0;
+
+		while(!vecs.isEmpty())
+		{
+			Vector v = vecs.get(0);
+
+			x += vectorX(v);
+			y += vectorY(v);
+
+			vecs.remove(0);
+		}
+
+		return cartesianToVector((x/arraySize), (y/arraySize));
 	}
 }
